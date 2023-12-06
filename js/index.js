@@ -54,25 +54,115 @@ cuestionario.addEventListener("submit", (puntuacion) => {
         }
 )} */
 
+
 /*Explico por aquí mi idea: es hacer un cuestionario que puntúe las respuestas del usuario y, en función de lo obtenido te catalogue como guardiero, pasador o versátil en bjj.*/
+
+/*Definimos la función para leer respuestas*/
+function leerRespuesta (pregunta) { 
+  do {
+    respuesta = prompt(pregunta).toLowerCase()
+    if (respuesta !== "a" && respuesta !=="b" && respuesta !=="c") {
+      alert("Para responder tienes que escribir A, B o C, no se seas hipoglúcido.")
+    }
+  }
+  while (respuesta !== "a" && respuesta !=="b" && respuesta !=="c")
+
+
+  return respuesta
+}
 
 const OPCIONGUARDIERO = 1
 const OPCIONPASADOR = 2
 const OPCIONVERSATIL = 0
 
-let resultado = 0
+let continuar;
+do {
+  resultado = 0;
+
+pregunta1 = "Cuando quedas con amigos lejos, prefieres... A) Ir andando tranquilamente. B) O me llevan en coche o vamos en taxi, pero andando jamás. C) Haré lo que hagan los demás para no destacar."
+respuesta1 = leerRespuesta(pregunta1) 
+  if (respuesta1 == "a") {
+    resultado += OPCIONPASADOR
+    console.log("tu respuesta a la pregunta 1 suma " + OPCIONPASADOR)
+  }
+  else if (respuesta1 == "b") {
+    resultado += OPCIONGUARDIERO
+    console.log("tu respuesta a la pregunta 1 suma " + OPCIONGUARDIERO)
+  }
+  else if (respuesta1 == "c") {
+    resultado += OPCIONVERSATIL
+    console.log("tu respuesta a la pregunta 1 suma " + OPCIONVERSATIL)
+  }
+
+pregunta2 = "Es Navidad, no hay más entrenamientos hasta después de las fiestas y la mesa está llena de tu comida preferida. Tú... A) Como sin remordimientos, porque la vida es una. B) Algún capricho hay que darse, pero sin pasarse que hay que mantenerse. C) Yo tengo mi pollo cocido en la nevera, que hay que rendir en todos los entrenamientos."
+respuesta2 = leerRespuesta(pregunta2) 
+
+  if (respuesta2 == "a") {
+    resultado += OPCIONPASADOR
+    console.log("tu respuesta a la pregunta 2 suma " + OPCIONPASADOR)
+  }
+  else if (respuesta2 == "b") {
+    resultado += OPCIONVERSATIL
+    console.log("tu respuesta a la pregunta 2 suma " + OPCIONVERSATIL)
+  }
+  else if (respuesta2 == "c") {
+    resultado += OPCIONGUARDIERO
+    console.log("tu respuesta a la pregunta 2 suma " + OPCIONGUARDIERO)
+  }
+
+/*SUMA DE RESULTADOS*/
+  if (resultado > 2) {
+  alert("Eres pasador")
+  console.log("la suma es " + resultado + ", así que eres pasador en bjj")
+  }
+  else if (resultado <= 2 && resultado != 0) {
+  alert("Eres guardiero")
+  console.log("la suma es " + resultado+ ", así que eres guardiero en bjj")
+  }
+
+  else if (resultado === 0) {
+  alert("Eres versátil")
+  console.log("la suma es " + resultado + ", así que eres versátil en bjj")
+  }
 
 
-let amigos = prompt("Cuando quedas con amigos lejos, prefieres... A) Ir andando tranquilamente. B) O me llevan en coche o vamos en taxi, pero andando jamás. C) Haré lo que hagan los demás para no destacar.")
-if (amigos == "a") {
+/*BUCLE PARA VOLVER A EMPEZAR*/
+  continuar = prompt("¿Quieres probar de nuevo? (Sí/No)");
+} while (continuar.toLowerCase() === "si");
+
+
+  /*
+  else {
+    alert("Vaya, parece que no hemos conseguido calcularlo. Refresca la página e intenta de nuevo")
+  }
+
+
+/*  
+
+
+*/
+/*
+function sumar () {
+
+
+  console.log("suma de resultados" + suma)
+}
+
+
+/*let amigos = prompt("Cuando quedas con amigos lejos, prefieres... A) Ir andando tranquilamente. B) O me llevan en coche o vamos en taxi, pero andando jamás. C) Haré lo que hagan los demás para no destacar.")
+if (amigos = "a") {
   resultado = + OPCIONPASADOR
+  console.log("La respuesta suma " + resultado)
 }
-else if (amigos == "b") {
+else if (amigos = "b") {
   resultado = + OPCIONGUARDIERO
+  console.log("La respuesta suma " + resultado)
+
 }
 
-else if (amigos == "c") {
-  resultado = OPCIONVERSATIL
+else if (amigos = "c") {
+  resultado = + OPCIONVERSATIL
+  console.log("La respuesta suma " + resultado)
 }
 
 else (alert("Para responder tienes que escribir A, B o C, no se seas hipoglúcido. "))
@@ -80,16 +170,23 @@ else (alert("Para responder tienes que escribir A, B o C, no se seas hipoglúcid
 let comida = prompt("Es Navidad, no hay más entrenamientos hasta después de las fiestas y la mesa está llena de tu comida preferida. Tú... A) Como sin remordimientos, porque la vida es una. B) Algún capricho hay que darse, pero sin pasarse que hay que mantenerse. C) Yo tengo mi pollo cocido en la nevera, que hay que rendir en todos los entrenamientos.")
 if (comida == "a") {
   resultado = + OPCIONPASADOR
+  console.log("La respuesta suma " + resultado)
+
 }
 else if (comida == "b") {
   resultado = + OPCIONVERSATIL
+  console.log("La respuesta suma " + resultado)
+
 }
 else if (comida == "c") {
   resultado = + OPCIONGUARDIERO
+  console.log("La respuesta suma " + resultado)
+
 }
 
 else (alert("Para responder tienes que escribir A, B o C, no se seas hipoglúcido. "))
 
+
 let suma = 
 
-console.log(suma)
+console.log(suma)*/
