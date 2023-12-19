@@ -56,6 +56,19 @@ cuestionario.addEventListener("submit", (puntuacion) => {
 
 
 /*Explico por aquí mi idea: es hacer un cuestionario que puntúe las respuestas del usuario y, en función de lo obtenido te catalogue como guardiero, pasador o versátil en bjj.*/
+/*Para añadir funcionalidades, vamos a recopilar los datos del usuario para crear una encuesta que muestre los resultados.*/
+let resultadosUsuarios = []
+
+class Usuario {
+  constructor (apodo, escuela, edad, ciudad, pais) {
+    this.apodo = apodo;
+    this. escuela = escuela;
+    this.edad = edad;
+    this.ciudad=ciudad;
+    this.pais=pais
+  }
+}
+
 
 /*Definimos la función para leer respuestas*/
 function leerRespuesta (pregunta) { 
@@ -125,68 +138,61 @@ respuesta2 = leerRespuesta(pregunta2)
   console.log("la suma es " + resultado + ", así que eres versátil en bjj")
   }
 
+/*ACUMULAMOS DATOS DE LOS USUARIOS*/
+let categoria = (resultado > 2) ? "Pasador" : (resultado <= 2 && resultado != 0) ? "Guardiero" : "Versátil"
+
+let usuario = new Usuario(
+  prompt("¿Nos dices tu apodo o nombre?"),
+  prompt("¿En qué equipo o escuela entrenas?"),
+  prompt("¿Qué edad tienes?"),
+  prompt("Tu ciudad es..."),
+  prompt("...del país..."),
+  categoria
+);
+
+resultadosUsuarios.push(usuario)
+
 
 /*BUCLE PARA VOLVER A EMPEZAR*/
-  continuar = prompt("¿Quieres probar de nuevo? (Sí/No)");
-} while (continuar.toLowerCase() === "si");
+  continuar = prompt("¿Quieres probar de nuevo? (Sí/No)")
+} while (continuar.toLowerCase() === "si")
 
+/*Mostrar el promedio de resultados a los usuarios*/
+calcularPromedioResultados(resultadosUsuarios)
 
-  /*
-  else {
-    alert("Vaya, parece que no hemos conseguido calcularlo. Refresca la página e intenta de nuevo")
+function calcularPromedioResultados(resultados) {
+  if (resultados.length === 0) {
+    console.log("Lo sentimos, no hay suficientes datos para poder hacer un porcentaje. Sigue luchando y nos vemos otro día.")
+    return;
   }
 
+/*Obtenemos el número total de personas que han completado el quiz*/
+let totalUsuarios = resultadosUsuarios.length
+console.log("Total de usuarios:", totalUsuarios)
 
-/*  
+/*Filtramos por categoría*/
+let usuariosGuardieros = resultados.filter(usuario => usuario.categoria === 'Guardiero')
+let usuariosPasadores = resultados.filter(usuario => usuario.categoria === 'Pasador')
+let usuariosVersatiles = resultados.filter(usuario => usuario.categoria === 'Versátil')
+console.log("Usuarios Guardieros:", usuariosGuardieros)
+console.log("Usuarios Pasadores:", usuariosPasadores)
+console.log("Usuarios Versátiles:", usuariosVersatiles)
+
+/*Medimos lalongitud en cada categoría*/
+let cantidadGuardieros = usuariosGuardieros.length
+let cantidadPasadores = usuariosPasadores.length
+let cantidadVersatiles = usuariosVersatiles.length
+console.log("Cantidad Guardieros:", cantidadGuardieros)
+console.log("Cantidad Pasadores:", cantidadPasadores)
+console.log("Cantidad Versátiles:", cantidadVersatiles)
 
 
-*/
-/*
-function sumar () {
+/*Calculamos el porcentaje en cada uno de los resultados*/
+let porcentajeGuardieros = (cantidadGuardieros / totalUsuarios) * 100
+let porcentajePasadores = (cantidadPasadores / totalUsuarios) * 100
+let porcentajeVersatiles = (cantidadVersatiles / totalUsuarios) * 100
 
-
-  console.log("suma de resultados" + suma)
+console.log("Porcentaje de Guardieros: " + porcentajeGuardieros.toFixed(2) + "%")
+console.log("Porcentaje de Pasadores: " + porcentajePasadores.toFixed(2) + "%")
+console.log("Porcentaje de Versátiles: " + porcentajeVersatiles.toFixed(2) + "%")
 }
-
-
-/*let amigos = prompt("Cuando quedas con amigos lejos, prefieres... A) Ir andando tranquilamente. B) O me llevan en coche o vamos en taxi, pero andando jamás. C) Haré lo que hagan los demás para no destacar.")
-if (amigos = "a") {
-  resultado = + OPCIONPASADOR
-  console.log("La respuesta suma " + resultado)
-}
-else if (amigos = "b") {
-  resultado = + OPCIONGUARDIERO
-  console.log("La respuesta suma " + resultado)
-
-}
-
-else if (amigos = "c") {
-  resultado = + OPCIONVERSATIL
-  console.log("La respuesta suma " + resultado)
-}
-
-else (alert("Para responder tienes que escribir A, B o C, no se seas hipoglúcido. "))
-
-let comida = prompt("Es Navidad, no hay más entrenamientos hasta después de las fiestas y la mesa está llena de tu comida preferida. Tú... A) Como sin remordimientos, porque la vida es una. B) Algún capricho hay que darse, pero sin pasarse que hay que mantenerse. C) Yo tengo mi pollo cocido en la nevera, que hay que rendir en todos los entrenamientos.")
-if (comida == "a") {
-  resultado = + OPCIONPASADOR
-  console.log("La respuesta suma " + resultado)
-
-}
-else if (comida == "b") {
-  resultado = + OPCIONVERSATIL
-  console.log("La respuesta suma " + resultado)
-
-}
-else if (comida == "c") {
-  resultado = + OPCIONGUARDIERO
-  console.log("La respuesta suma " + resultado)
-
-}
-
-else (alert("Para responder tienes que escribir A, B o C, no se seas hipoglúcido. "))
-
-
-let suma = 
-
-console.log(suma)*/
