@@ -3,18 +3,18 @@
 
 /*FONDO ANIMADO*/
 .css-selector {
-    background: linear-gradient(139deg, #fd0000, #fd7100, #fdf700, #04bb63, #01b8ff, #9f02af);
-    background-size: 1200% 1200%;
+    background: linear-gradient(40deg, #9049BF, #fafafa);
+    background-size: 100% 100%;
   
-    -webkit-animation: AnimationName 23s ease infinite;
-    -moz-animation: AnimationName 23s ease infinite;
-    animation: AnimationName 23s ease infinite;
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
   }
   
   @keyframes AnimationName {
-    0% { background-position: 0% 57%; }
-    50% { background-position: 100% 44%; }
-    100% { background-position: 0% 57%; }
+    0% { background-position: 0% 100%; }
+    50% { background-position: 100% 0%; }
+    100% { background-position: 0% 100%; }
 }
 
 /*CUERPO*/
@@ -39,12 +39,14 @@ label {
 }
 
 button {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: #F2D022;
+    color: #260D40;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 2rem;
+    font-size: 1rem;
 }
 
 button:hover {
@@ -57,7 +59,7 @@ h1 {
     font-weight: 800;
     font-size: 3rem;
     text-align: center;
-    color: whitesmoke;
+    color: #260D40;
 }
 
 h2 {
@@ -65,5 +67,48 @@ h2 {
     font-weight: 400;
     font-size: 2rem;
     text-align: center;
-    color: whitesmoke;
+    color: #260D40;
+}
+
+h3 {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: center;
+    color: #260D40;
+}
+
+p {
+    font-family: 'Source Sans Pro';
+    font-weight: 800;
+    font-size: 1rem;
+    color: #260D40;
+}
+
+label {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-size: 1rem;
+    color: #260D40;
+}
+
+.estilo {
+    font-family: 'Source Sans Pro';
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #260D40;
+}
+
+.listadoUsuarios  {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    column-gap: 2rem;
+}
+
+.tarjeta {
+    background-color: #fafafa;
+    padding: 1rem;
+    border-radius: 20px;
 }

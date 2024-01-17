@@ -1,73 +1,109 @@
-/*Necesitamos, por partes: leer las respuestas del usuario, otorgarle la puntuación adecuada a cada respuesta, obtener apodo y club y acumular todos esos datos en la memoria; después, necesitamos mostrar una card que indique apodo, club y estado asignado (guardiero, pasador o versátil) a lo que se puede añadir, la suma de puntos obtenidos.*/
 
 /*Definimos la función para leer respuestas*/
-function leerRespuestas(preguntaId) {
+function captaRespuesta(preguntaId) {
   const pregunta = document.getElementById(preguntaId)
-  const respuesta = pregunta.querySelector(':checked').value/*Esto no lo entiendo, la verdad. Osea, entiendo cada parte pero no coje lo que tiene que coger y falla todo el tiempo. Que yo había intentado con los id y me estoy liando muchísimo porque nada funciona*/
+  const respuesta = parseInt(pregunta.querySelector(':checked').value)
   return respuesta
 }
 
-/*Asignamos puntuaciones a cada pregunta y sumamos al resultado*/
-p1 = leerRespuestas('p1')
-if (p1 === 'p1a') {
-  resultado += OPCIONPASADOR
-  console.log("Tu respuesta a la pregunta 1 suma " + OPCIONPASADOR)
-} else if (p1 === 'p1b') {
-  resultado += OPCIONGUARDIERO
-  console.log("Tu respuesta a la pregunta 1 suma " + OPCIONGUARDIERO);
-} else if (p1 === 'p1c') {
-  resultado += OPCIONVERSATIL
-  console.log("Tu respuesta a la pregunta 1 suma " + OPCIONVERSATIL)
+/*Array para preguntas y función de lectura de las respuestas*/
+function leerRespuestas(){
+  let idPregunta, respuesta
+  const preguntas = ["p1", "p2", "p3", "p4", "p5"]
+  let resultado = 0
+
+  for (let numeroPregunta=0; numeroPregunta<preguntas.length; numeroPregunta++) {
+    idPregunta = preguntas[numeroPregunta]
+    respuesta = captaRespuesta(idPregunta)
+    resultado += respuesta
+  }
+
+  return resultado
 }
 
-/*Mostramos resultados*/
-document.getElementById('calcularResultados').addEventListener('click', function () {
-  let mensaje
-if (resultado > 5) {
+
+/*Función para calcular resultados*/
+function calcularResultados() {
+  let mensaje, resultado, categoria
+
+  resultado = leerRespuestas()
+  if (resultado > 5) {
   mensaje = "Eres pasador"
+  categoria = "pasador"
+  }
+  else if (resultado != 0) {
+   mensaje = "Eres guardiero"
+   categoria = "guardiero"
+
+   }
+  else {
+    mensaje = "Eres versátil"
+    categoria = "versatil"
+  }
+
+  /*Creamos el mensaje cada vez que se haga la encuesta*/
+  const resultadoContainer = document.getElementById('resultadoPersonal')
+  resultadoContainer.innerHTML = `<p>${mensaje}</p>`
+  console.log("La suma de tus resultados es " + resultado)
+
+  return categoria
+
 }
-else if (resultado <= 5 && resultado != 0) {
-  mensaje = "Eres guardiero"
-}
-else {
-  mensaje = "Eres versátil"
-}
-})
   
-resultadoContainer.innerHTML = `<p>${mensaje}</p>`
-console.log("La suma de tus resultados es " + resultado)
+function manejaPuntos() {
+  const categoria = calcularResultados()
+  const apodo = document.getElementById("apodo").value
+  const club = document.getElementById("club").value
+  
+  guardarUsuarios(apodo,club,categoria)
+}
 
-// /*y este caos pos tampoco sirve*/
-// const resultado = parseInt(respuesta1) + parseInt(respuesta2) + parseInt(respuesta3) + parseInt(respuesta4) + parseInt(respuesta5)
 
-// /*Notificamos el resultado*/
-// mostrarResultado(resultado)
+function guardarUsuarios(apodo,club,categoria) {
+  let listaUsuarios = []
+  const USUARIO = {
+    apodo: apodo,
+    club: club,
+    categoria: categoria
+  }
 
-// /*DOM para leer respuestas*/
-// function obtenerRespuesta (nombrePregunta) {
-//   const opciones = document.getElementByName(nombrePregunta)
-//   for (const opcion of opciones) {
-//     if (opcion.checked) {
-//       return opcion.value
-//     }
-//   }
-//   return '0' /*en caso de que no haya seleccionado nada*/
-// }
+    /*Recuperamos la lista de la memoria*/
+  if ("usuarios" in localStorage) {
+    listaUsuarios = JSON.parse(localStorage.getItem("usuarios"))
+  }
 
-// /*Mostramos el resultado en pantalla*/
-// function mostrarResultado (resultado) {
-//   const resultadoContainer = document.getEelementById('resultado')
-//   let mensaje
+  listaUsuarios.push(USUARIO)
 
-//   if (resultado > 5) {
-//     mensaje = "Eres pasador"
-//   }
-//   else if (resultado <= 5 && resultado != 0) {
-//     mensaje = "Eres guardiero"
-//   }
-//   else {
-//     mensaje = "Eres versátil"
-//   }
-// }
+  localStorage.setItem("usuarios", JSON.stringify(listaUsuarios))
+}
 
-/*resultadoContainer.innerHTML = `<p>${mensaje}</p>`*/
+  /*Función del botón*/
+document.getElementById('resultadoBtn').addEventListener('click', manejaPuntos)
+
+
+function agregarUsuarios() {
+
+  let listadoUsuarios = JSON.parse(localStorage.getItem("usuarios"));
+  let divPadre = document.getElementById("listadoUsuarios")
+
+  divPadre.innerHTML = "";
+
+  if (listadoUsuarios && listadoUsuarios.length > 0) {
+    listadoUsuarios.forEach((usuario) => {
+      let divUsuario = document.createElement("div")
+      divUsuario.className = "tarjeta"
+      divUsuario.innerHTML = `
+        <h3>${usuario.apodo}</h3>
+        <h3>${usuario.club}</h3>
+        <p class="estilo">${usuario.categoria}</p>
+      `
+
+    divPadre.appendChild(divUsuario)
+    })
+  } 
+  else {
+    divPadre.innerHTML = "<p>No hay usuarios registrados.</p>"
+  }
+}
+
+agregarUsuarios();  

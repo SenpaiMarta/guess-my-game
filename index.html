@@ -21,98 +21,110 @@
             <div class="pregunta" id="p1">
                 <p>Cuando quedas con amigos lejos, prefieres...</p>
                 <label for="p1a">
-                    <input type="radio" id="p1a" name="p1" value="2">
+                    <input type="radio" name="p1" value="2">
                     Ir andando tranquilamente.
                 </label>
 
                 <label for="p1b">
-                    <input type="radio" id="p1b" name="p1" value="1">
+                    <input type="radio" name="p1" value="1">
                     O me llevan en coche o vamos en taxi, pero andando jamás.
                 </label>
 
                 <label for="p1c">
-                    <input type="radio" id="p1c" name="p1" value="0">
+                    <input type="radio" name="p1" value="0">
                     Haré lo que hagan los demás para no destacar.
                 </label>
             </div>
 
-            <div class="pregunta" for="p2">
+            <div class="pregunta" id="p2">
                 <p >POV: Es Navidad, no hay más entrenamientos hasta después de las fiestas y la mesa está llena de tu comida preferida. Tú...</p>
                 <label for="p2a">
-                    <input type="radio" id="p2a" name="p2" value="2">
+                    <input type="radio" name="p2" value="2">
                     Como sin remordimientos, porque la vida es una.
                 </label>
 
                 <label for="p2b">
-                    <input type="radio" id="p2b" name="p2" value="0">
+                    <input type="radio" name="p2" value="0">
                     Algún capricho hay que darse, pero sin pasarse que hay que mantenerse.
                 </label>
 
                 <label for="p2c">
-                    <input type="radio" id="p2c" name="p2" value="1">
-                    Yo tengo mi pollo cocido en la nevera, que hay que rendir en todos los entrenamientos.                </label>
+                    <input type="radio" name="p2" value="1">
+                    Yo tengo mi pollo cocido en la nevera, que hay que rendir en todos los entrenamientos.                
+                </label>
             </div>
 
 
-            <div class="pregunta" for="p3">
+            <div class="pregunta" id="p3">
                 <p>Es la hora de las rodadas con los compañeros y te toca el que siempre coge la media guardia y no te deja salir. Para evitarlo tú...</p>
                 <label for="p3a">
-                    <input type="radio" id="p3a" name="p3" value="2">
+                    <input type="radio" name="p3" value="2">
                     Fist bump y a por todas, no voy a dejar que me meta en la guardia ni de refilón.
                 </label>
 
                 <label for="p3b">
-                    <input type="radio" id="p3b" name="p3" value="0">
+                    <input type="radio" name="p3" value="0">
                     Si quiere jugar duro, juguemos duro: lo voy a obligar a entrar en mi guardia. 
                 </label>
 
                 <label for="p3c">
-                    <input type="radio" id="p3c" name="p3" value="1">
+                    <input type="radio" name="p3" value="1">
                     Que haga lo que quiera porque he visto varios tutoriales sobre cómo salir de ahí este finde.
                 </label>
             </div>
 
-            <div class="pregunta" for="p4">
+            <div class="pregunta" id="p4">
                 <p>Tu coach da a elegir la temática de la clase de hoy. Y tu voto es decisivo: decides...</p>
                 <label for="p4a">
-                    <input type="radio" id="p4a" name="p4" value="1">
+                    <input type="radio" name="p4" value="1">
                     Sesión de rolling, sea como sea: has venido aquí a luchar.
                 </label>
 
                 <label for="p4b">
-                    <input type="radio" id="p4b" name="p4" value="0">
+                    <input type="radio" name="p4" value="0">
                     Que me expliquen cómo salir de la posición en la que siempre caigo con varias opciones, por favor.
                 </label>
 
                 <label for="p4c">
-                    <input type="radio" id="p4c" name="p4" value="2">
+                    <input type="radio" name="p4" value="2">
                     Drills y encadenamientos, que hay que seguir mejorando esa movilidad, bro.
                 </label>
             </div>
 
-            <div class="pregunta" for="p5">
+            <div class="pregunta" id="p5">
                 <p>Ves a tu bestie de lejos haciéndote señas para que entrenéis, y tú...</p>
-                <labe for="p5a">
-                    <input type="radio" id="p5a" name="p5" value="2">
+                <label for="p5a">
+                    <input type="radio" name="p5" value="2">
                     Cruzo la sala disimuladamente para cumplir sus deseos, que son los mismos que los míos.
                 </label>
 
                 <label for="p5b">
-                    <input type="radio" id="p5b" name="p5" value="1">
+                    <input type="radio" name="p5" value="1">
                     Que se espere hasta la hora de las luchas, y entonces lo flipamos.
                 </label>
 
                 <label for="p5c">
-                    <input type="radio" id="p5c" ="p5" value="0">
+                    <input type="radio" name="p5" value="0">
                     Prefiero ponerme con el preta que ha venido a entrenar hoy, que seguro que me enseña más trucos.
                 </label>
             </div>
+                <label for="apodo">Apodo:</label>
+                <input type="text" id="apodo" name="apodo">
+    
+                <label for="club">Club:</label>
+                <input type="text" id="club" name="club">
+            <div>
 
-            <button type="button" id="calcularResultado">¡Quiero saber cómo soy!</button>
+            </div>
+
+            <button type="button" id="resultadoBtn">¡Quiero saber cómo soy!</button>
             
         </form>
 
-        <div id="resultado"></div>
+        <div id="resultadoPersonal"></div>
+
+        <h2>Listado de usuarios</h2>
+        <div id="listadoUsuarios" class="listadoUsuarios"></div>
         
           
     <script src="js/index.js"></script>      
