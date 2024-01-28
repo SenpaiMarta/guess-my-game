@@ -1,114 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
 /*IMPORTANDO FUENTES*/
 @import url(https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap);
 
-/*FONDO ANIMADO*/
-.css-selector {
-    background: linear-gradient(40deg, #9049BF, #fafafa);
-    background-size: 100% 100%;
-  
-    -webkit-animation: AnimationName 5s ease infinite;
-    -moz-animation: AnimationName 5s ease infinite;
-    animation: AnimationName 5s ease infinite;
-  }
-  
-  @keyframes AnimationName {
-    0% { background-position: 0% 100%; }
-    50% { background-position: 100% 0%; }
-    100% { background-position: 0% 100%; }
-}
 
 /*CUERPO*/
-body {
+.headerHome {
+    background-color: #F2D022;
+    text-align: center;
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    margin-top: auto;
+    overflow-x: hidden;
+}
+
+.rotating-text {
+    white-space: nowrap;
+    display: inline-block;
+    animation: moveText 10s linear infinite alternate;
+    width: 150%; /* Doble del ancho para cubrir toda la pantalla */
+  }
+
+@keyframes moveText {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.tipo {
+    max-width: 90%;
+    max-height: 100px;
+}
+  
+.icono {
+    height: 50px;
+    animation: swing;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    margin-top: 5px;
+}
+
+body {
+    background-color: #260D40;
+    min-height: 100dvh;
+    overflow-x: hidden;
     margin: 0;
+
 }
 
 form {
-    max-width: 600px;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+    width: 60dvw;
+    margin: 30px 30px 30px 100px;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
+.rellenable {
+    display: flex;
+    background-color: #F2D022;
+    margin: 10px;
+}
+
+.rellenable label {
+    font-family: 'Source Sans 3';
+    font-weight: 800;
+    font-size: 1rem;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    color: #9049bf;
+}
+
+.rellenable input[type="text"] {
+    flex: 1 1 auto;
+    border: #F2D022;
+    padding: 5px;
 }
 
 button {
+    font-family: 'Source Sans 3';
+    font-weight: 800;
+    font-size: 1.3rem;
+    text-align: center;
     background-color: #F2D022;
     color: #260D40;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 35px;
     cursor: pointer;
     margin-top: 2rem;
     font-size: 1rem;
+    width: fit-content;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #9049bf;
 }
 
 /*TÍTULOS Y PÁRRAFOS*/
 h1 {
-    font-family: 'Source Sans Pro';
-    font-weight: 800;
-    font-size: 3rem;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 900;
+    color: #F2D022;
     text-align: center;
-    color: #260D40;
+    margin: 10px 20px 10px 20px;
 }
+  
 
 h2 {
-    font-family: 'Source Sans Pro';
-    font-weight: 400;
-    font-size: 2rem;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 700;
+    color: #F2D022;
     text-align: center;
-    color: #260D40;
+    margin: 10px 20px 10px 20px;
 }
 
 h3 {
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-weight: 400;
     font-size: 1rem;
     text-align: center;
-    color: #260D40;
+    color: #9049bf;
 }
 
 p {
-    font-family: 'Source Sans Pro';
-    font-weight: 800;
-    font-size: 1rem;
-    color: #260D40;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #9049bf;
 }
 
 label {
-    font-family: 'Source Sans Pro';
+    display: block;
+    font-family: 'Source Sans 3';
     font-weight: 400;
     font-size: 1rem;
-    color: #260D40;
+    color: #F2D022;
+    margin-bottom: 10px;
 }
 
 .estilo {
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-weight: 800;
     font-size: 1.2rem;
     text-align: center;
     color: #260D40;
 }
 
+.mensaje {
+    text-align: center;
+}
+
 .listadoUsuarios  {
     display: flex;
     flex-flow: wrap;
-    justify-content: space-between;
+    align-content: space-between;
+    justify-content: center;
     column-gap: 2rem;
+    row-gap: 1rem;
 }
 
 .tarjeta {
     background-color: #fafafa;
     padding: 1rem;
     border-radius: 20px;
+    width: 200px;
+    align-items: center;
+}
+
+
+@media (max-width: 1024px) {
+    .listadoUsuarios {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    form {
+        width: 80dvw;
+        margin: 30px 10px 30px 30px;
+    }
 }

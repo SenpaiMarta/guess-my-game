@@ -1,4 +1,3 @@
-
 /*Definimos la función para leer respuestas*/
 function captaRespuesta(preguntaId) {
   const pregunta = document.getElementById(preguntaId)
@@ -43,7 +42,7 @@ function calcularResultados() {
 
   /*Creamos el mensaje cada vez que se haga la encuesta*/
   const resultadoContainer = document.getElementById('resultadoPersonal')
-  resultadoContainer.innerHTML = `<p>${mensaje}</p>`
+  Swal.fire(`<p class="mensaje">${mensaje}</p>`);
   console.log("La suma de tus resultados es " + resultado)
 
   return categoria
@@ -56,6 +55,7 @@ function manejaPuntos() {
   const club = document.getElementById("club").value
   
   guardarUsuarios(apodo,club,categoria)
+  agregarUsuarios()
 }
 
 
@@ -102,7 +102,7 @@ function agregarUsuarios() {
     })
   } 
   else {
-    divPadre.innerHTML = "<p>No hay usuarios registrados.</p>"
+    divPadre.innerHTML = "<h3>No hay usuarios registrados.</h3>"
   }
 }
 

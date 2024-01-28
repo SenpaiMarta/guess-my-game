@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Guess my Game - Un juego by Rashcrew</title>
 </head>
 
-<body class="css-selector">
-    <header>
-
+<body>
+    <header class="headerHome">
+            <div class="rotating-text">
+                <p>Dime cómo eres y te diré cómo luchas...</p>
+            </div>
     </header>
 
     <main>
-        <h1>Bienvenido al cuestionario definitivo del BJJ</h1>
+        <h1>Un quiz de BJJ by</h1>
+        <section class="logo">
+            <img class="icono" src="images/icono-rashcrew.svg" alt="icono rashcrew shaka">
+            <img class="tipo" src="images/logotipo-rashcrew.svg" alt="rashcrew">
+        </section>
         <h2>Responde a las preguntas y sabrás cuál es tu juego en el tatami.</h2>
         
         <form id="guessMyGame">
@@ -108,13 +118,14 @@
                     Prefiero ponerme con el preta que ha venido a entrenar hoy, que seguro que me enseña más trucos.
                 </label>
             </div>
+
+            <div class="rellenable">
                 <label for="apodo">Apodo:</label>
                 <input type="text" id="apodo" name="apodo">
-    
+            </div>
+            <div class="rellenable">
                 <label for="club">Club:</label>
                 <input type="text" id="club" name="club">
-            <div>
-
             </div>
 
             <button type="button" id="resultadoBtn">¡Quiero saber cómo soy!</button>
@@ -126,10 +137,8 @@
         <h2>Listado de usuarios</h2>
         <div id="listadoUsuarios" class="listadoUsuarios"></div>
         
-          
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
     <script src="js/index.js"></script>      
-    <canvas id="gradient-canvas" data-transition-in />
-
     </main>
 </body>
 </html>
