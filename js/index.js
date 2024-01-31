@@ -1,3 +1,25 @@
+/* Cargar productos desde el JSON */
+async function cargarRashguards() {
+  const response = await fetch('index.json')
+  const data = await response.json()
+  return data.categorias
+}
+
+/* Función para mostrar el SweetAlert con la categoría y la rashguard que corresponda */
+function aviso (categoria, rashguard) {
+  Swal.fire({
+    html: `
+      <p class="mensaje">Así eres tú, ${categoria}</p>
+      <p>Para que todo el mundo lo sepa, deberías lleva runa rashguard molona que lo diga. </p>
+      <p>${rashguard.nombre}. Cómprala por ${rashguard.precio}</p>
+      <img src="${rashguard.imagen}" alt="${rashguard.nombre}">
+    `,
+    confirmButtonText: '¡La quiero!',
+    showCancelButton: true,
+    cancelButtonText: 'Quiero volver al quiz'
+  })
+
+}
 /*Definimos la función para leer respuestas*/
 function captaRespuesta(preguntaId) {
   const pregunta = document.getElementById(preguntaId)
@@ -22,10 +44,10 @@ function leerRespuestas(){
 
 
 /*Función para calcular resultados*/
-function calcularResultados() {
-  let mensaje, resultado, categoria
+async function calcularResultados() {
+  let resultado = leerRespuestas()
+  let categoria, rashguard
 
-  resultado = leerRespuestas()
   if (resultado > 5) {
   mensaje = "Eres pasador"
   categoria = "pasador"
@@ -41,13 +63,18 @@ function calcularResultados() {
   }
 
   /*Creamos el mensaje cada vez que se haga la encuesta*/
-  const resultadoContainer = document.getElementById('resultadoPersonal')
-  Swal.fire(`<p class="mensaje">${mensaje}</p>`);
-  console.log("La suma de tus resultados es " + resultado)
+  const CATEGORIAS = await cargarRashguards()
+  const categoriaActual = CATEGORIAS.find(cat => cat.nombre === categoria)
 
-  return categoria
+  if (categoriaActual && categoriaActual.rashguard) {
+    rashguard = categoriaActual.rashguard
+    aviso(categoria, rashguard)
+  }
 
-}
+  console.log("La suma de tus resultados es " + resultado);
+
+  return categoria;
+  }
   
 function manejaPuntos() {
   const categoria = calcularResultados()
@@ -56,6 +83,7 @@ function manejaPuntos() {
   
   guardarUsuarios(apodo,club,categoria)
   agregarUsuarios()
+
 }
 
 
@@ -106,4 +134,5 @@ function agregarUsuarios() {
   }
 }
 
-agregarUsuarios();  
+agregarUsuarios()
+  

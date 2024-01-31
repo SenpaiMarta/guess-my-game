@@ -1,0 +1,20 @@
+{
+    "categorias": [
+      {
+        "nombre": "pasador",
+        "rashguard": {
+          "nombre": "Rashguard Pasador",
+          "precio": 35,
+          "imagen": "images/rashcrew-pasador.jpg"
+        }
+      },
+      {
+        "nombre": "guardiero",
+        "rashguard": {
+          "nombre": "Rashguard Guardiero",
+          "precio": 35,
+          "imagen": "images/rashcrew-guardiero.jpg"
+        }
+      }
+    ]
+  }
