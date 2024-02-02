@@ -1,6 +1,6 @@
 /* Cargar productos desde el JSON */
 async function cargarRashguards() {
-  const response = await fetch('index.json')
+  const response = await fetch('../index.json')
   const data = await response.json()
   return data.categorias
 }
@@ -10,9 +10,9 @@ function aviso (categoria, rashguard) {
   Swal.fire({
     html: `
       <p class="mensaje">Así eres tú, ${categoria}</p>
-      <p>Para que todo el mundo lo sepa, deberías lleva runa rashguard molona que lo diga. </p>
+      <p>Para que todo el mundo lo sepa, deberías llevar una rashguard molona que lo diga. </p>
       <p>${rashguard.nombre}. Cómprala por ${rashguard.precio}</p>
-      <img src="${rashguard.imagen}" alt="${rashguard.nombre}">
+      <img class="rashguard" src="${rashguard.imagen}" alt="${rashguard.nombre}">
     `,
     confirmButtonText: '¡La quiero!',
     showCancelButton: true,
@@ -44,7 +44,7 @@ function leerRespuestas(){
 
 
 /*Función para calcular resultados*/
-async function calcularResultados() {
+function calcularResultados() {
   let resultado = leerRespuestas()
   let categoria, rashguard
 
@@ -62,21 +62,12 @@ async function calcularResultados() {
     categoria = "versatil"
   }
 
-  /*Creamos el mensaje cada vez que se haga la encuesta*/
-  const CATEGORIAS = await cargarRashguards()
-  const categoriaActual = CATEGORIAS.find(cat => cat.nombre === categoria)
-
-  if (categoriaActual && categoriaActual.rashguard) {
-    rashguard = categoriaActual.rashguard
-    aviso(categoria, rashguard)
-  }
-
   console.log("La suma de tus resultados es " + resultado);
 
   return categoria;
-  }
+}
   
-function manejaPuntos() {
+async function manejaPuntos() {
   const categoria = calcularResultados()
   const apodo = document.getElementById("apodo").value
   const club = document.getElementById("club").value
@@ -84,6 +75,16 @@ function manejaPuntos() {
   guardarUsuarios(apodo,club,categoria)
   agregarUsuarios()
 
+  
+  /*Creamos el mensaje cada vez que se haga la encuesta*/
+  const CATEGORIAS = await cargarRashguards()
+  const categoriaActual = CATEGORIAS.find(cat => cat.nombre === categoria)
+
+  if (categoriaActual && categoriaActual.rashguard) {
+    rashguard = categoriaActual.rashguard
+    aviso(categoria, rashguard)
+
+}
 }
 
 
@@ -135,4 +136,3 @@ function agregarUsuarios() {
 }
 
 agregarUsuarios()
-  

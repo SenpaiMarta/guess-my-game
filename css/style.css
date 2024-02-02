@@ -127,7 +127,7 @@ h2 {
     font-weight: 700;
     color: #F2D022;
     text-align: center;
-    margin: 10px 20px 10px 20px;
+    margin: 10px 20px 30px 20px;
 }
 
 h3 {
@@ -181,6 +181,10 @@ label {
     border-radius: 20px;
     width: 200px;
     align-items: center;
+}
+
+.rashguard {
+    width: 300px;
 }
 
 
